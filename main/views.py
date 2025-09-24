@@ -20,7 +20,7 @@ def show_main(request):
         product_catalog = Product.objects.filter(user=request.user)
     
     context = {
-        "name": "Michael Stephen Daniel Panjaitan",
+        "name": request.user.username,
         "class": "PBP A",
         "npm": "2406496321",
         "product_catalog": product_catalog,
