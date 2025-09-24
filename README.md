@@ -1,4 +1,5 @@
-TUGAS 2
+<details>
+<summary>TUGAS 2</summary>
 Untuk membuat proyek Django ini, pertama saya membuat virtual environment di terminal. Lalu saya menginstal beberapa dependancies yang dibutuhkan dalam proyek sesuai dengan langkah pada tutorial 0. Lalu saya buat proyek tugas 2 ini dengan nama football_shop.
 Saya membuat aplikasi "main" pada proyek dengan menjalankan perintah py manage.py startapp main pada terminal dalam direktori proyek dan virtual environment. Lalu pada file settings.py di direktori proyek saya daftarkan aplikasi 'main' ke dalam variabel INSTALLED_APPS.
 Routing URL untuk mengakses aplikasi main dilakukan dengan cara pergi ke file urls.py di direktori proyek, impor fungsi include dari django.urls, lalu pada variabel urlpatterns saya tambahkan kode path('', include('main.urls'))
@@ -9,8 +10,10 @@ Deployment ke PWS saya lakukan sama persis dengan langkah-langkah pada sesi tuto
 settings.py adalah pusat konfigurasi proyek Django. Intinya: semua pengaturan global aplikasi ada di sana dan dieksekusi sebagai modul Python saat Django dijalankan.
 Migrasi bekerja dengan cara menulis/mengubah model (models.py) di app. Lalu jalankan py manage.py makemigrations di terminal dalam virtual environment. Django membandingkan state model saat ini dengan snapshot terakhir, lalu membuat berkas migrasi di direktori migrations. Lalu jalankan py manage.py migrate. Ini menerapkan migrasi ke database: Django menjalankan operasi yang sesuai dan mencatat migrasi yang sudah dijalankan di tabel django_migrations.
 Django sering dipilih karena menyediakan banyak fitur built-in (ORM, auth, admin UI, forms, i18n, sessions, caching, dan lain-lain). Jadi pemula dapat membangun aplikasi lengkap tanpa menambahkan banyak paket dari awal. Struktur proyek dan pola kerja terorganisir (models, templates, views) sehingga pembelajaran arsitektur web jadi lebih mudah.
+</details>
 
-TUGAS 3
+<details>
+<summary>TUGAS 3</summary>
 Data delivery diperlukan untuk dapat menerima, mengelola, dan mengirimkan data dengan cepat, tepat, dan aman.
 Menurut saya, JSON lebih baik dari pada XML karena sintaksnya yang sederhana yaitu berupa pasangan key-value yang merepresentasikan sebuah objek yang kemudian disimpan dalam sebuah array. XML memiliki sintaks seperti HTML dalam penulisannya sehingga cenderung lebih sulit dibaca. Oleh karena itu, JSON lebih populer dibanding XML.
 Fungsi is_valid bertujuan untuk memvalidasi data yang diinput pengguna ke bagian form. 
@@ -22,3 +25,16 @@ Halaman form dan detail produk saya buat sama seperti langkah-langkah yang diber
 
 URL access on Postman:
 https://drive.google.com/drive/folders/1QVTYtCZdyCLBZqRP3xho83nVrNpFqPik?usp=sharing
+</details>
+
+<details>
+<summary>Tugas 4</summary>
+Django AuthenticationForm adalah sebuah class pada Django yang berfungsi untuk membuat fitur dan form/halaman login agar pengguna dapat masuk ke dalam situs web.
+Kelebihannya yaitu: 1. Form bawaan Django yang bisa langsung diimplementasikan ke dalam web. 2. Keamanan yang terjamin secara default, seperti dalam password hashing dan session management (aktif/tidak aktifnya user). 3. Integrasi dengan autentikasi Django, di mana bisa langsung bekerja dengan model User dari Django dan restriksi halaman situs dengan decorator @login_required. 4. Penanganan eror otomatis seperti pengecekan keberadaan user dan verifikasi username/password yang salah tanpa menulis logika sendiri.
+Kekurangannya yakni: 1. Tampilan yang sederhana tanpa ada styling dan semacamnya. 2. Sistem autentikasi standar (username & password) saja. 3. Kurang fitur autentikasi lebih seperti 2-factor authentication, "Remember me", dan login dengan akun sosial seperti Google dan Facebook.
+
+Autentikasi adalah proses mengetahui siapa diri Anda (user), sedangkan otorisasi adalah proses mengetahui apa saja kewenangan/yang dapat dilakukan oleh user.
+Autentikasi (bawaan) di Django: Model User, Fungsi login, logout, dan authenticate, class AuthenticationForm.
+Otorisasi di Django: Decorator @login_required yang merestriksi halaman situs html untuk user yang telah login, model yang dibuat memiliki permission otomatis (seperti add, change, delete, view).
+
+Kelebihan Cookie: Mudah digunakan karena data langsung tersimpan di browser, otomatis terkirim ke server pada setiap request serta bertahan lama sehingga cocok untuk fitur seperti "remember me" atau preferensi pengguna. Data disimpan di sisi client maka server tidak perlu menyimpan state tambahan. Bisa diakses JavaScript Memudahkan kustomisasi oleh user.

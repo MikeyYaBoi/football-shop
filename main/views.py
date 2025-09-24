@@ -12,7 +12,13 @@ from main.models import Product
 
 @login_required(login_url='/login')
 def show_main(request):
-    product_catalog = Product.objects.all()
+    filter_type = request.GET.get("filter", "all")
+
+    if filter_type == "all":
+        product_catalog = Product.objects.all()
+    else:
+        product_catalog = Product.objects.filter(user=request.user)
+    
     context = {
         "name": "Michael Stephen Daniel Panjaitan",
         "class": "PBP A",
@@ -26,7 +32,9 @@ def create_product(request):
     form = ProductForm(request.POST or None)
     
     if form.is_valid() and request.method == "POST":
-        form.save()
+        product_entry = form.save(commit=False)
+        product_entry.user = request.user
+        product_entry.save()
         return redirect('main:show_main')
     
     context = {'form': form}
