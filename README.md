@@ -62,3 +62,28 @@ Halaman main.html saya tampilkan waktu terakhir login user dengan tag {{ last_lo
 Saya menghubungkan model Product dengan User dengan cara mengimpor class User dari Django. Pada model Product saya tambahkan atribut user: 'models.ForeignKey(User, on_delete=models.CASCADE, null=True)'. Atribut ini akan mengikat satu instance Product dengan satu instance User saja. Product yang tidak punya User akan tetap ada di database melalui 'null=True' dan akun User yang dihapus akan menghapus semua Product yang dimiliki melalui 'on_delete=models.CASCADE' pada atribut user. Perubahan models.py saya migrate di terminal.
 Pada views.py di fungsi create_product() blok 'if' saya buat variable product_entry yang menyimpan input produk baru yang ingin dijual. Lalu fied user dari product_entry tersebut akan diisi dari request.user (user yang sedang aktif).
 
+<details>
+<summary>TUGAS 5</summary>
+Pada halaman login, saya beri latar abu-abu cerah penuh (bg-gray-50). Saya wrapping dalam kontainer luar lebarnya utuh dan tinggi sama dengan viewport, sehingga card dapat dipusatkan vertikal. Card login di tengah secara vertikal dan horizontal. Padding luar untuk memberikan ruang dari tepi layar. Lebar card dikasih batas di layar besar, tetapi tetap responsif di layar kecil. Card latarnya putih rounded border warna abu-abu. Judul teks rata tengah ukuran 2xl dan dibuat bold. 
+
+Urutan prioritas CSS selector: 1. Inline style (di dalam style tag) 2. ID selector (diawali #) 3. Class selector (diawali .) 4. Element selector
+
+Responsive design penting karena ada beberapa manfaat yang diberikan, yaitu pengguna mengakses situs dari berbagai perangkat, tampilan tetap nyaman dan mudah dibaca di layar kecil, memudahkan koding desain untuk semua ukuran layar, situs yang mobile-friendly lebih mudah muncul di search engine, dan mengurangi bounce rate. Contoh aplikasi yang punya responsive design: Youtube, Gojek, Tokopedia, X. Contoh aplikasi yang belum: CodingBat, Internet Archive, SIAK-NG.
+
+Perbedaan margin, border, padding:
+Margin: Area transparan di luar border yang memberi jarak antar elemen.
+Border: Garis pembatas di antara margin dan padding.
+Padding: Area transparan di dalam elemen (antara konten website dan border).
+Contoh implementasi: 
+.box {
+  margin: 20px;     /* Jarak dari elemen lain */
+  border: 2px solid black; /* Garis pembatas */
+  padding: 15px;    /* Jarak konten dari border */
+}
+
+Flexbox adalah sistem layout 1 dimensi mengatur baris atau kolom yang digunakan untuk mengatur dan meratakan elemen secara dinamis.
+Kegunaannya: Menyusun elemen secara horizontal atau vertikal, mengatur jarak dan perataan antar elemen dengan mudah dalam kontainer, menyesuaikan lebar/tinggi elemen anak secara fleksibel. Flexbox cocok untuk komponen kecil seperti navbar, card, atau form.
+CSS Grid Layout adalah sistem layout 2 dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom sekaligus. Sistem ini ideal untuk layout halaman utama (header, sidebar, content, footer), dapat menentukan ukuran kolom/baris dengan mudah, lebih presisi untuk tata letak kompleks.
+
+
+</details>
