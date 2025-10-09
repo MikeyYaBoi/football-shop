@@ -27,13 +27,6 @@
 
   <!-- Content -->
   <div class="p-5">
-    <div class="flex items-center text-sm text-gray-500 mb-3">
-      <time datetime="{{ product.created_at|date:'c' }}">
-        {{ product.created_at|date:"M j, Y" }}
-      </time>
-      <span class="mx-2">•</span>
-    </div>
-
     <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 leading-tight">
       <a href="{% url 'main:show_product' product.id %}" class="hover:text-green-600 transition-colors">
         {{ product.name }}
