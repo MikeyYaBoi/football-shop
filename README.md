@@ -61,6 +61,7 @@ Halaman main.html saya tampilkan waktu terakhir login user dengan tag {{ last_lo
 
 Saya menghubungkan model Product dengan User dengan cara mengimpor class User dari Django. Pada model Product saya tambahkan atribut user: 'models.ForeignKey(User, on_delete=models.CASCADE, null=True)'. Atribut ini akan mengikat satu instance Product dengan satu instance User saja. Product yang tidak punya User akan tetap ada di database melalui 'null=True' dan akun User yang dihapus akan menghapus semua Product yang dimiliki melalui 'on_delete=models.CASCADE' pada atribut user. Perubahan models.py saya migrate di terminal.
 Pada views.py di fungsi create_product() blok 'if' saya buat variable product_entry yang menyimpan input produk baru yang ingin dijual. Lalu fied user dari product_entry tersebut akan diisi dari request.user (user yang sedang aktif).
+</details>
 
 <details>
 <summary>TUGAS 5</summary>
@@ -84,6 +85,4 @@ Contoh implementasi:
 Flexbox adalah sistem layout 1 dimensi mengatur baris atau kolom yang digunakan untuk mengatur dan meratakan elemen secara dinamis.
 Kegunaannya: Menyusun elemen secara horizontal atau vertikal, mengatur jarak dan perataan antar elemen dengan mudah dalam kontainer, menyesuaikan lebar/tinggi elemen anak secara fleksibel. Flexbox cocok untuk komponen kecil seperti navbar, card, atau form.
 CSS Grid Layout adalah sistem layout 2 dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom sekaligus. Sistem ini ideal untuk layout halaman utama (header, sidebar, content, footer), dapat menentukan ukuran kolom/baris dengan mudah, lebih presisi untuk tata letak kompleks.
-
-
 </details>
