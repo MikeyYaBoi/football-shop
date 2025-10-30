@@ -86,3 +86,12 @@ Flexbox adalah sistem layout 1 dimensi mengatur baris atau kolom yang digunakan 
 Kegunaannya: Menyusun elemen secara horizontal atau vertikal, mengatur jarak dan perataan antar elemen dengan mudah dalam kontainer, menyesuaikan lebar/tinggi elemen anak secara fleksibel. Flexbox cocok untuk komponen kecil seperti navbar, card, atau form.
 CSS Grid Layout adalah sistem layout 2 dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom sekaligus. Sistem ini ideal untuk layout halaman utama (header, sidebar, content, footer), dapat menentukan ukuran kolom/baris dengan mudah, lebih presisi untuk tata letak kompleks.
 </details>
+
+<details>
+<summary>TUGAS 6</summary>
+Perbedaan antara synchronous dan asynchronous request adalah pada synchronous request eksekusi berjalan berurutan. Setelah client mengirim request ke server, client harus menunggu response dari server sebelum bisa melakukan instruksi berikutnya sehingga aplikasi berhenti sementara sampai server memberikan response. Sedangkan pada asynchronous request, setelah mengirimkan request client masih bisa mengeksekusi perintah lain selagi menunggu response dari server dan aplikasi tetap berjalan.  
+
+Bagaimana AJAX di Django: Client melakukan sebuah event, lalu event ditangkap oleh script JS misal fetch(). Script mengirimkan HTTP request ke URL Django. View function Django lalu membaca data yang dikirim (misalnya JSON), memproses logika, dan mereturn JSON response. Response ini dikirim oleh server Django ke browser, lalu ditangani JS dan kemudian mengupdate tampilan website tanpa reload.
+
+
+</details>
