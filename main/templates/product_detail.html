@@ -152,7 +152,7 @@ function renderProduct(product) {
     productDescriptionText.textContent = product.description;
     
     // Set author
-    const authorName = product.user_username || 'Anonymous';
+    const authorName = product.user.username || 'Anonymous';
     productSeller.textContent = `Author: ${authorName}`;
 }
 
