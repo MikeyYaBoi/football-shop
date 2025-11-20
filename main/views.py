@@ -1,4 +1,4 @@
-import datetime
+import datetime, requests, json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
@@ -106,6 +106,8 @@ def show_json(request):
             'id': product.id,
             'name': product.name,
             'description': product.description,
+            'category': product.category,
+            'price': product.price,
             'thumbnail': product.thumbnail,
             'is_featured': product.is_featured,
             'user_id': product.user_id,
@@ -133,7 +135,7 @@ def show_json_by_id(request, product_id):
             'thumbnail': product_item.thumbnail,
             'is_featured': product_item.is_featured,
             'user_id': product_item.user_id,
-            'user_username': product_item.user_username if product_item.user_id else None,
+            'user_username': product_item.user.username if product_item.user_id else None,
         }
         return JsonResponse(json_data)
     except Product.DoesNotExist:
@@ -173,4 +175,47 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+def proxy_image(request):
+    image_url = request.GET.get('url')
+    if not image_url:
+        return HttpResponse('No URL provided', status=400)
+    
+    try:
+        # Fetch image from external source
+        response = requests.get(image_url, timeout=10)
+        response.raise_for_status()
+        
+        # Return the image with proper content type
+        return HttpResponse(
+            response.content,
+            content_type=response.headers.get('Content-Type', 'image/jpeg')
+        )
+    except requests.RequestException as e:
+        return HttpResponse(f'Error fetching image: {str(e)}', status=500)
 
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        name = strip_tags(data.get("title", ""))  # Strip HTML tags
+        description = strip_tags(data.get("content", ""))  # Strip HTML tags
+        category = data.get("category", "")
+        price = data.get("price", "")
+        thumbnail = data.get("thumbnail", "")
+        is_featured = data.get("is_featured", False)
+        user = request.user
+        
+        new_product = Product(
+            name=name, 
+            description=description,
+            category=category,
+            thumbnail=thumbnail,
+            is_featured=is_featured,
+            user=user,
+            price=price,
+        )
+        new_product.save()
+        
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
